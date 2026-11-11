@@ -1,0 +1,99 @@
+{
+  "eval_period": {
+    "name": "heldout_2024",
+    "start": "2024-01-01",
+    "end": "2025-01-01"
+  },
+  "tree_train_period": {
+    "start": "2025-01-01",
+    "end": "2026-01-01"
+  },
+  "dl_models": {
+    "GCN": [
+      "spatial.gcn_simple",
+      "checkpoints/gcn_simple/20261019_190210/best_model.pth",
+      "DL"
+    ],
+    "BiLSTM": [
+      "temporal.bilstm",
+      "checkpoints/bilstm/20260416_170027/best_model.pth",
+      "DL"
+    ],
+    "GCN-BiLSTM": [
+      "spatio_temporal.gnn_bilstm_a",
+      "checkpoints/gcn_bilstm/20260503_141628/best_model.pth",
+      "Hybrid DL"
+    ]
+  },
+  "tree_models": [
+    "RandomForest",
+    "XGBoost"
+  ],
+  "tree_features": [
+    "sum_l1",
+    "sum_l2",
+    "sum_l3",
+    "sum_l4",
+    "sum_l5",
+    "sum_l6",
+    "q_l1",
+    "q_l2",
+    "q_l3",
+    "tod_sin",
+    "tod_cos",
+    "weekend",
+    "normal_target",
+    "dev_last"
+  ],
+  "rf_params": {
+    "n_estimators": 60,
+    "max_depth": 16,
+    "min_samples_leaf": 20,
+    "max_features": 0.6,
+    "n_jobs": -1,
+    "random_state": 0
+  },
+  "xgb_params": {
+    "n_estimators": 600,
+    "max_depth": 8,
+    "learning_rate": 0.05,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "tree_method": "hist",
+    "random_state": 0
+  },
+  "tree_train_rows": 2000000,
+  "tta": {
+    "direction": "down",
+    "k": 0.5,
+    "h_catalogue": 5.0,
+    "h_report": 5.0,
+    "h_sweep": [
+      2.0,
+      3.0,
+      5.0,
+      8.0,
+      12.0
+    ],
+    "z_cap": 4.0,
+    "warmup_min": 30.0,
+    "max_lead_min": 10.0,
+    "max_wait_min": 60.0,
+    "fa_grace_min": 15.0,
+    "min_event_duration_min": 15.0,
+    "min_event_depth": 0.15,
+    "depth_window_min": 15.0,
+    "recovery_min": 5.0,
+    "min_normal_level": 50.0,
+    "n_boot": 2000,
+    "seed": 0,
+    "dt_min": 1.0,
+    "n_detectors_scored": 178,
+    "n_ongoing_excluded": 16,
+    "n_candidate_episodes": 86048,
+    "n_dropped_low_level": 48208,
+    "n_dropped_short": 7982,
+    "n_dropped_shallow": 11753,
+    "events_per_detector_day": 0.4792340196597121
+  }
+}

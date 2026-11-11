@@ -1,0 +1,106 @@
+{
+  "dataset": "chengdu",
+  "test_period": [
+    "2018-04-07 00:00:00",
+    "2018-04-30 23:50:00"
+  ],
+  "first_forecast": "2018-04-07 02:00:00",
+  "lead_min": 10,
+  "lookback_steps": 12,
+  "split": [
+    0.7,
+    0.1
+  ],
+  "holidays": [
+    "2018-01-01",
+    "2018-02-15",
+    "2018-02-16",
+    "2018-02-17",
+    "2018-02-18",
+    "2018-02-19",
+    "2018-02-20",
+    "2018-02-21",
+    "2018-04-05",
+    "2018-04-06",
+    "2018-04-07",
+    "2018-04-29",
+    "2018-04-30"
+  ],
+  "workdays": [
+    "2018-02-11",
+    "2018-02-24",
+    "2018-04-08",
+    "2018-04-28"
+  ],
+  "dl_runs": {
+    "GCN": "results/benchmark/chengdu/gcn_seed42",
+    "BiLSTM": "results/benchmark/chengdu/bilstm_seed42",
+    "GCN-BiLSTM": "results/benchmark/chengdu/gcn_bilstm_seed42"
+  },
+  "tree_features": [
+    "lag1",
+    "lag2",
+    "lag3",
+    "lag4",
+    "lag5",
+    "lag6",
+    "tod_sin",
+    "tod_cos",
+    "weekend",
+    "normal_target",
+    "dev_last"
+  ],
+  "tree_rows": 2000000,
+  "rf_params": {
+    "n_estimators": 60,
+    "max_depth": 16,
+    "min_samples_leaf": 20,
+    "max_features": 0.6,
+    "n_jobs": -1,
+    "random_state": 0
+  },
+  "xgb_params": {
+    "n_estimators": 600,
+    "max_depth": 8,
+    "learning_rate": 0.05,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "tree_method": "hist",
+    "random_state": 0
+  },
+  "hist_average_steps": 3,
+  "tta_module": "new_tta",
+  "tta": {
+    "direction": "down",
+    "k": 0.5,
+    "h_catalogue": 5.0,
+    "h_report": 5.0,
+    "h_sweep": [
+      2.0,
+      3.0,
+      5.0,
+      8.0,
+      12.0
+    ],
+    "z_cap": 4.0,
+    "warmup_min": 30.0,
+    "max_lead_min": 10.0,
+    "max_wait_min": 60.0,
+    "fa_grace_min": 15.0,
+    "min_event_duration_min": 15,
+    "min_event_depth": 0.15,
+    "depth_window_min": 15,
+    "recovery_min": 5.0,
+    "min_normal_level": null,
+    "n_boot": 2000,
+    "seed": 0,
+    "dt_min": 10.0,
+    "n_detectors_scored": 524,
+    "n_ongoing_excluded": 6,
+    "n_candidate_episodes": 8480,
+    "n_dropped_low_level": 0,
+    "n_dropped_short": 0,
+    "n_dropped_shallow": 4233,
+    "events_per_detector_day": 0.3394748411334479
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "node": "MQ99-670-Stg_H",
+  "onset": "2024-05-25 15:19:00",
+  "depth": 0.35658642649650574,
+  "duration_min": 33.0,
+  "tta_min": {
+    "RandomForest": 14.0,
+    "XGBoost": 14.0,
+    "BiLSTM": 11.0,
+    "GCN": 8.0,
+    "GCN-BiLSTM": 8.0
+  },
+  "persistence_tta_min": 6.0
+}

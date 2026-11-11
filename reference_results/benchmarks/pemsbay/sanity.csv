@@ -1,0 +1,7 @@
+check,value,expected,ok
+MAE GCN (tta vs train script),0.8929960798816569,0.8927144319568178,True
+MAE BiLSTM (tta vs train script),0.8938466715976331,0.8935658410772188,True
+MAE GCN-BiLSTM (tta vs train script),0.8800811390532545,0.8798022869423161,True
+Persistence TTA_median ~ lead,5.0,5,True
+HistProfile caught_pct = 0,0.0,0,True
+events per detector-day (guide 0.01-0.1),0.28339881656804733,0.01-0.1,False

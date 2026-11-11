@@ -1,0 +1,89 @@
+{
+  "dataset": "metrla",
+  "test_period": [
+    "2012-06-04 04:45:00",
+    "2012-06-27 23:55:00"
+  ],
+  "first_forecast": "2012-06-04 05:45:00",
+  "lead_min": 5,
+  "lookback_steps": 12,
+  "split": [
+    0.7,
+    0.1
+  ],
+  "holidays": [
+    "2012-05-28"
+  ],
+  "workdays": [],
+  "dl_runs": {
+    "GCN": "results/benchmark/metrla/gcn_seed42",
+    "BiLSTM": "results/benchmark/metrla/bilstm_seed42",
+    "GCN-BiLSTM": "results/benchmark/metrla/gcn_bilstm_seed42"
+  },
+  "tree_features": [
+    "lag1",
+    "lag2",
+    "lag3",
+    "lag4",
+    "lag5",
+    "lag6",
+    "tod_sin",
+    "tod_cos",
+    "weekend",
+    "normal_target",
+    "dev_last"
+  ],
+  "tree_rows": 2000000,
+  "rf_params": {
+    "n_estimators": 60,
+    "max_depth": 16,
+    "min_samples_leaf": 20,
+    "max_features": 0.6,
+    "n_jobs": -1,
+    "random_state": 0
+  },
+  "xgb_params": {
+    "n_estimators": 600,
+    "max_depth": 8,
+    "learning_rate": 0.05,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "tree_method": "hist",
+    "random_state": 0
+  },
+  "hist_average_steps": 6,
+  "tta_module": "new_tta",
+  "tta": {
+    "direction": "down",
+    "k": 0.5,
+    "h_catalogue": 5.0,
+    "h_report": 5.0,
+    "h_sweep": [
+      2.0,
+      3.0,
+      5.0,
+      8.0,
+      12.0
+    ],
+    "z_cap": 4.0,
+    "warmup_min": 30.0,
+    "max_lead_min": 10.0,
+    "max_wait_min": 60.0,
+    "fa_grace_min": 15.0,
+    "min_event_duration_min": 15,
+    "min_event_depth": 0.15,
+    "depth_window_min": 15,
+    "recovery_min": 5.0,
+    "min_normal_level": null,
+    "n_boot": 2000,
+    "seed": 0,
+    "dt_min": 5.0,
+    "n_detectors_scored": 207,
+    "n_ongoing_excluded": 5,
+    "n_candidate_episodes": 3669,
+    "n_dropped_low_level": 0,
+    "n_dropped_short": 114,
+    "n_dropped_shallow": 1551,
+    "events_per_detector_day": 0.4081648240438411
+  }
+}

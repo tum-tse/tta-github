@@ -1,0 +1,68 @@
+{
+  "run_dir": "checkpoints/gcn_simple/20261019_190210",
+  "status": "completed",
+  "notes": "plain 2-layer GCN with skip connection (dense normalised adjacency)",
+  "duration": "00h 17m 54s",
+  "duration_seconds": 1074,
+  "best_epoch": 35,
+  "best_val_rmse": 14.215035438537598,
+  "final_train": {
+    "rmse": 17.310148239135742,
+    "mae": 11.490447044372559,
+    "rmse_per_h": [
+      17.310148239135742
+    ],
+    "mae_per_h": [
+      11.490447044372559
+    ]
+  },
+  "final_val": {
+    "rmse": 14.671931266784668,
+    "mae": 8.633058547973633,
+    "rmse_per_h": [
+      14.671931266784668
+    ],
+    "mae_per_h": [
+      8.633058547973633
+    ]
+  },
+  "data_range": {
+    "start": "2025-01-01 00:00:00",
+    "end": "2025-12-31 23:59:00",
+    "n_timesteps": 525600
+  },
+  "config": {
+    "nodes_csv": "global/a8-a99-a9_cleaned/a8-a99-a9-global_nodes_cleaned.csv",
+    "edges_csv": "global/a8-a99-a9_cleaned/a8-a99-a9-global_edges_cleaned.csv",
+    "selection_csv": "meta_fixed.csv",
+    "data_dir": "/home/hamza/Autobahn/Traffic",
+    "debug_mapping_out": "debug_node_to_files.csv",
+    "feature_cols": [
+      "q_kfz",
+      "q_lkw",
+      "q_pkw",
+      "v_kfz",
+      "b"
+    ],
+    "target_col": "q_kfz",
+    "lookback": 30,
+    "horizon": 1,
+    "step_size": 5,
+    "accumulation_window": 5,
+    "batch_size": 128,
+    "lr": 0.001,
+    "epochs": 1000,
+    "train_ratio": 0.8,
+    "patience": 15,
+    "min_delta": 0.01,
+    "hidden": 256,
+    "num_nodes": 178,
+    "notes": "plain 2-layer GCN with skip connection (dense normalised adjacency)",
+    "nan_fill_value": 0.0,
+    "device": "cuda",
+    "date_suffix": "2025-01-01_bis_2026-01-01",
+    "gcn_hidden": 128,
+    "gcn_layers": 2,
+    "gcn_dropout": 0.1
+  }
+}

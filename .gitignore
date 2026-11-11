@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+data/*
+!data/autobahn/
+data/autobahn/*
+!data/autobahn/README.txt
+models/test_results_tta/
+figures/out/
+debug_node_to_files*.csv
