@@ -9,3 +9,5 @@ data/autobahn/*
 models/test_results_tta/
 figures/out/
 debug_node_to_files*.csv
+/dataset.npy
+/matrix.npy
