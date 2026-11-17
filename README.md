@@ -45,7 +45,11 @@ Check the metric on synthetic data (about one minute, no data needed):
 python models/tta.py --selftest        # ends with "self-test passed"
 ```
 
-## 2. Data (Munich)
+## 2. Data
+
+Two kinds of data are used: the Munich motorway data (main case study, full pipeline in this repository) and four public benchmark networks (scored with the same metric, see below). Raw data of neither are included.
+
+### Munich
 
 The Munich data are 1-minute loop-detector records of Die Autobahn GmbH des Bundes on the A8-A99-A9 motorway triangle, available from the SCUDO Open Data Platform:
 https://opendataplatform.scudo-project.eu/?uc=traffic-management&cat=05-traffic-conditions
@@ -59,7 +63,18 @@ Put all lane files in one folder, `data/autobahn/`, or point `TTA_DATA_DIR` to a
 
 Each file is one lane of one detector, named `FG1_Kurz_<unit>_agg1min_<suffix>.csv`, semicolon-separated, with columns `t_start;q_kfz_h;q_lkw_h;q_pkw_h;v_kfz;v_lkw;v_pkw;b;t_netto;s_kfz`. The lane units of each detector are listed in `meta_fixed.csv`.
 
-The four benchmark networks (METR-LA, PEMS-BAY, Chengdu, Shenzhen) use public data from the ST-GFSL release; where to get them, the setup and an example of the model input are in `benchmarks/README.md`.
+### Benchmark networks
+
+Four public speed datasets, taken from the release of ST-GFSL (Lu et al., KDD 2022, https://github.com/RobinLu1209/ST-GFSL). Each is a `dataset.npy` (traffic) and a `matrix.npy` (road graph).
+
+| Network | Detectors | Step | Test period | Forecast lead |
+|---|---|---|---|---|
+| METR-LA | 207 | 5 min | 2012-06-04 to 2012-06-27 | 5 min |
+| PEMS-BAY | 325 | 5 min | 2017-05-25 to 2017-06-30 | 5 min |
+| Chengdu | 524 | 10 min | 2018-04-07 to 2018-04-30 | 10 min |
+| Shenzhen | 627 | 10 min | 2018-04-07 to 2018-04-30 | 10 min |
+
+The last 20 % of each series is the test period, and the settings used for scoring are in `reference_results/benchmarks/<dataset>/d15/config.json`. The download, the split, the date handling (PEMS-BAY skips the daylight-saving hour) and an example of what the models receive are in [`benchmarks/README.md`](benchmarks/README.md). The training and scoring scripts for these networks are not yet part of this repository; the per-network results are in `reference_results/benchmarks/`.
 
 ## 3. Reproducing the Munich results
 
