@@ -25,7 +25,7 @@ meta_fixed.csv                  detector sites and their lane units
 checkpoints/                    trained Munich models used in the paper (best_model.pth + run_summary.json)
 figures/                        one script per figure (Figs. 1-7) and the trade-off curves
 reference_results/              the paper's summary tables, for comparison with a rerun
-benchmarks/                     the four benchmark networks (see benchmarks/README.md)
+benchmarks/                     the four benchmark networks: data, setup and an input example (benchmarks/README.md)
 ```
 
 ## 1. Environment
@@ -58,6 +58,8 @@ Put all lane files in one folder, `data/autobahn/`, or point `TTA_DATA_DIR` to a
 | 2025 | `2025-01-01_bis_2026-01-01` | training of all learned models |
 
 Each file is one lane of one detector, named `FG1_Kurz_<unit>_agg1min_<suffix>.csv`, semicolon-separated, with columns `t_start;q_kfz_h;q_lkw_h;q_pkw_h;v_kfz;v_lkw;v_pkw;b;t_netto;s_kfz`. The lane units of each detector are listed in `meta_fixed.csv`.
+
+The four benchmark networks (METR-LA, PEMS-BAY, Chengdu, Shenzhen) use public data from the ST-GFSL release; where to get them, the setup and an example of the model input are in `benchmarks/README.md`.
 
 ## 3. Reproducing the Munich results
 
