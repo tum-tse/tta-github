@@ -21,7 +21,7 @@ folder, e.g. `data/metr_la/`.
 
 Setup used here (it differs from the few-shot, cross-city setup of ST-GFSL):
 
-- Split in time: first 70 % training, next 10 % validation, last 20 % test. Nothing is trained on the test period, and there is no cross-city transfer.
+- Split in time: first 70 % training, next 10 % validation, last 20 % test. Nothing is trained on the test period.
 - Input: the last 12 steps; target: the next step, so the lead is one step (5 or 10 min).
 - The files hold values in physical units. In METR-LA a speed of 0 means "missing": set it to NaN before scoring (PEMS-BAY has no zeros). Model outputs must be de-normalised before scoring.
 - The files carry no dates. For METR-LA, Chengdu and Shenzhen, rebuild them from the start date in the table and a fixed step (no gaps). PEMS-BAY is in local Pacific time and skips the hour lost to daylight saving on 2017-03-12 (52,116 steps, not 52,128), so use `pd.date_range("2017-01-01", "2017-06-30 23:55", freq="5min", tz="US/Pacific")`. The time-of-day channel of PEMS-BAY is a plain step counter and does not skip that hour; do not use it for dates there.
